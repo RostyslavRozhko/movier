@@ -20,9 +20,9 @@ mongoose.connect('mongodb://purii:ruslan16@ds161012.mlab.com:61012/filmbase', {
   useMongoClient: true
 });
 
-// delete temp files
+// delete posters archive
 app.on('listening', function () {
-    findRemoveSync('./public/images/temp', {age: {seconds: 360}, extensions: '.jpg'});
+    findRemoveSync('./public/images/temp', {age: {seconds: 3600}, extensions: '.jpg'});
 });
 
 // view engine setup
