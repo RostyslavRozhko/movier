@@ -5,6 +5,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var findRemoveSync = require('find-remove');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -17,6 +18,11 @@ var app = express();
 //mongoose.connect('mongodb://purii:ruslan16@ds161012.mlab.com:61012/filmbase');
 mongoose.connect('mongodb://purii:ruslan16@ds161012.mlab.com:61012/filmbase', {
   useMongoClient: true
+});
+
+// delete temp files
+app.on('listening', function () {
+    findRemoveSync('./public/images/temp', {age: {seconds: 360}, extensions: '.jpg'});
 });
 
 // view engine setup
