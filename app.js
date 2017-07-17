@@ -1,5 +1,5 @@
 var express = require('express');
-//var mongoose = require('mongoose');
+var mongoose = require('mongoose');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -16,9 +16,9 @@ var app = express();
 
 // connect to database
 //mongoose.connect('mongodb://purii:ruslan16@ds161012.mlab.com:61012/filmbase');
-/*mongoose.connect('mongodb://purii:ruslan16@ds161012.mlab.com:61012/filmbase', {
+mongoose.connect('mongodb://purii:ruslan16@ds161012.mlab.com:61012/filmbase', {
   useMongoClient: true
-});*/
+});
 
 // delete posters archive
 app.on('listening', function () {
