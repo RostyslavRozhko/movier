@@ -11,6 +11,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var films = require('./routes/films');
 var people = require('./routes/people');
+var auth = require('./routes/auth');
 
 var app = express();
 
@@ -21,9 +22,9 @@ mongoose.connect('mongodb://purii:ruslan16@ds161012.mlab.com:61012/filmbase', {
 });
 
 // delete posters archive
-app.on('listening', function () {
+/*app.on('listening', function () {
     findRemoveSync('./public/images/temp', {age: {seconds: 3600}, extensions: '.jpg'});
-});
+});*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -41,6 +42,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/films', films);
 app.use('/people', people);
+app.use('/auth', auth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
