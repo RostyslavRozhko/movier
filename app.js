@@ -12,6 +12,7 @@ var users = require('./routes/users');
 var films = require('./routes/films');
 var people = require('./routes/people');
 var auth = require('./routes/auth');
+var update = require('./routes/update');
 
 var app = express();
 
@@ -43,6 +44,7 @@ app.use('/users', users);
 app.use('/films', films);
 app.use('/people', people);
 app.use('/auth', auth);
+app.use('/update', update);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
