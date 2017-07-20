@@ -17,7 +17,7 @@ var update = require('./routes/update');
 var app = express();
 
 // connect to database
-mongoose.connect('mongodb://purii:ruslan16@ds161012.mlab.com:61012/filmbase');
+//mongoose.connect('mongodb://purii:ruslan16@ds161012.mlab.com:61012/filmbase');
 /*mongoose.connect('mongodb://purii:ruslan16@ds161012.mlab.com:61012/filmbase', {
   useMongoClient: true
 });*/
