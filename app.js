@@ -21,6 +21,9 @@ var app = express();
 /*mongoose.connect('mongodb://purii:ruslan16@ds161012.mlab.com:61012/filmbase', {
   useMongoClient: true
 });*/
+mongoose.connect('mongodb://purii:ruslan16@ds161012.mlab.com:61012/filmbase', { useMongoClient: true })
+      .then(() => console.log('Database connected'))
+      .catch(err => console.log('Database connection error'));
 
 // delete posters archive
 /*app.on('listening', function () {
