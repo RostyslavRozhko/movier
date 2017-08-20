@@ -9,19 +9,13 @@ var bodyParser = require('body-parser');
 var findRemoveSync = require('find-remove');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
-var films = require('./routes/films');
-var people = require('./routes/people');
-var auth = require('./routes/auth');
-var update = require('./routes/update');
+var channel = require('./routes/channel');
+var list = require('./routes/list');
+var film = require('./routes/films');
 
 var app = express();
 
 // connect to database
-//mongoose.connect('mongodb://purii:ruslan16@ds161012.mlab.com:61012/filmbase');
-/*mongoose.connect('mongodb://purii:ruslan16@ds161012.mlab.com:61012/filmbase', {
-  useMongoClient: true
-});*/
 mongoose.connect('mongodb://admin:ruslan16@ds161012.mlab.com:61012/filmbase', { useMongoClient: true })
       .then(() => console.log('Database connected'))
       .catch(err => console.log('Database connection error'));
@@ -44,11 +38,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
-app.use('/films', films);
-app.use('/people', people);
-app.use('/auth', auth);
-app.use('/update', update);
+app.use('/channel', channel);
+app.use('/list', list);
+app.use('/film', film);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
