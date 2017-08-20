@@ -11,7 +11,7 @@ var findRemoveSync = require('find-remove');
 var index = require('./routes/index');
 var channel = require('./routes/channel');
 var list = require('./routes/list');
-var film = require('./routes/films');
+var film = require('./routes/film');
 
 var app = express();
 
