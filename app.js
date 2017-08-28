@@ -1,4 +1,5 @@
 var express = require('express');
+var session = require('express-session');
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 var path = require('path');
@@ -6,13 +7,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var findRemoveSync = require('find-remove');
-
+var expressValidator = require('express-validator');
 var index = require('./routes/index');
 var channel = require('./routes/channel');
 var list = require('./routes/list');
 var film = require('./routes/film');
 var auth = require('./routes/auth');
+var fileUpload = require('express-fileupload');
+var cloudinary = require('cloudinary');
 
 var app = express();
 
@@ -21,10 +23,12 @@ mongoose.connect('mongodb://admin:ruslan16@ds161012.mlab.com:61012/filmbase', { 
       .then(() => console.log('Database connected'))
       .catch(err => console.log('Database connection error'));
 
-// delete posters archive
-/*app.on('listening', function () {
-    findRemoveSync('./public/images/temp', {age: {seconds: 3600}, extensions: '.jpg'});
-});*/
+//connect to image storage
+cloudinary.config({
+    cloud_name: 'dsqyqvcq4',
+    api_key: '127728219583678',
+    api_secret: 'NpdV7OhIXX-FMhNe8xl8PBHg34E'
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -35,8 +39,11 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(expressValidator());
 app.use(cookieParser());
+app.use(session( { secret: 'bvalsi47ty32q84f2h48eqg82uhguiwhgurh3hg78', name: 'hg4325vbbkvc3l' } ));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(fileUpload());
 
 app.use('/', index);
 app.use('/channel', channel);
