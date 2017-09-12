@@ -1,23 +1,22 @@
-var express = require('express');
-var session = require('express-session');
-var mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var expressValidator = require('express-validator');
-var fileUpload = require('express-fileupload');
-var cloudinary = require('cloudinary');
+const express = require('express');
+const session = require('express-session');
+const mongoose = require('mongoose'); mongoose.Promise = global.Promise;
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
+const fileUpload = require('express-fileupload');
+const cloudinary = require('cloudinary');
 
-var index = require('./routes/index');
-var channel = require('./routes/channel');
-var list = require('./routes/list');
-var film = require('./routes/film');
-var auth = require('./routes/auth');
+const index = require('./routes/index');
+const channel = require('./routes/channel');
+const list = require('./routes/list');
+const film = require('./routes/film');
+const auth = require('./routes/auth');
 
-var app = express();
+const app = express();
 
 // connect to database
 mongoose.connect('mongodb://admin:ruslan16@ds161012.mlab.com:61012/filmbase', { useMongoClient: true })
